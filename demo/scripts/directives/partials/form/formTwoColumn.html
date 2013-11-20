@@ -1,0 +1,15 @@
+<div>
+    <form name="editForm" novalidate class="form-horizontal">
+        <form-field-renderer></form-field-renderer>
+        <div class="container">
+            <div class="left-column pull-left span5">
+            </div>
+            <div class="right-column pull-left span5">
+            </div>
+        </div>
+         <div ng-hide="hideFormActions" class="form-actions">
+            <button ng-show="showSubmit" class="btn save medium white" ng-click="submit()" ng-disabled="(isSubmitting == 'true') || editForm.$invalid || editForm.$pristine" >save</button>
+             <a ng-show="showCancel" class="btn btn-warning cancel" ng-click="cancel()">cancel</a>
+        </div>
+    </form> 
+</div>
