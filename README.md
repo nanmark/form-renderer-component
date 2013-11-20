@@ -12,6 +12,6 @@ This component allows you to build forms efficiently through a simple configurat
 * Build the whole project, src and demo: `grunt build`
 * Build only component src files: `build-component`
 
-#### Run Demo locally
+#### Run Demo
 * Install bower dependencies: `bower install`
 * Run demo: `grunt server`
