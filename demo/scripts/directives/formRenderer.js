@@ -54,6 +54,9 @@ formRendererComponent.directive('formulate', ['$http', '$compile', '$parse', '$t
             case 'rte':
                 templateUrl = 'scripts/directives/partials/field/rte.html';
                 break;
+            case 'date':
+                templateUrl = 'scripts/directives/partials/field/date.html';
+                break;
             default:
                 templateUrl = 'scripts/directives/partials/field/textfield.html';
                 break;
@@ -76,6 +79,13 @@ formRendererComponent.directive('formulate', ['$http', '$compile', '$parse', '$t
         if (type === 'textarea') {
             if (!scope.field.rows)
                 scope.field.rows = 5;
+        }
+        if (type === 'date') {
+            if (!scope.field.datepickerOptions)
+                scope.field.datepickerOptions = {
+                    format: 'dd/mm/yyyy',
+                    endDate: new Date()
+                };
         }
 
         if (scope.field.pattern) {

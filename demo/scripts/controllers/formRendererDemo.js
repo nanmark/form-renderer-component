@@ -6,6 +6,8 @@ angular.module('formRendererDemo',[]).controller('DemoCtrl',['$scope','RteOption
     $scope.person = {
         firstName: 'Nadia',
         lastName: 'Mark',
+        dateBirth: '1986-05-17T00:00:00.000Z',
+        graduationYear: '2010',
         gender: 'female',
         adult: false,
         email: 'test@test.com',
@@ -65,6 +67,28 @@ angular.module('formRendererDemo',[]).controller('DemoCtrl',['$scope','RteOption
                     required: true,
                     minLength: 2,
                     maxLength: 5
+                },
+                {
+                    label: 'Date of birth',
+                    name: 'dateBirth',
+                    //placeholder: 'Last Name',
+                    type: 'date',
+                    model: 'model.dateBirth',
+                    required: true
+                },
+                {
+                    label: 'Graduation Year',
+                    name: 'graduationYear',
+                    //placeholder: 'Last Name',
+                    type: 'date',
+                    model: 'model.graduationYear',
+                    required: true,
+                    datepickerOptions: {
+                        format: 'yyyy', 
+                        minViewMode: 'years', 
+                        startView: 'year',
+                        endDate: new Date()
+                    }
                 },
                 {
                     label: 'Email',
