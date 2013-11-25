@@ -1,4 +1,4 @@
-angular.module('formRendererTemplates', ['scripts/directives/partials/field/checkbox.html', 'scripts/directives/partials/field/date.html', 'scripts/directives/partials/field/dropdown.html', 'scripts/directives/partials/field/email.html', 'scripts/directives/partials/field/hidden.html', 'scripts/directives/partials/field/password.html', 'scripts/directives/partials/field/radio.html', 'scripts/directives/partials/field/rte.html', 'scripts/directives/partials/field/tags.html', 'scripts/directives/partials/field/textarea.html', 'scripts/directives/partials/field/textfield.html', 'scripts/directives/partials/field/url.html', 'scripts/directives/partials/form/formGenerator.html', 'scripts/directives/partials/form/formSingleColumn.html', 'scripts/directives/partials/form/formTwoColumn.html']);
+angular.module('formRendererTemplates', ['scripts/directives/partials/field/checkbox.html', 'scripts/directives/partials/field/dropdown.html', 'scripts/directives/partials/field/email.html', 'scripts/directives/partials/field/hidden.html', 'scripts/directives/partials/field/password.html', 'scripts/directives/partials/field/radio.html', 'scripts/directives/partials/field/rte.html', 'scripts/directives/partials/field/tags.html', 'scripts/directives/partials/field/textarea.html', 'scripts/directives/partials/field/textfield.html', 'scripts/directives/partials/field/url.html', 'scripts/directives/partials/form/formGenerator.html', 'scripts/directives/partials/form/formSingleColumn.html', 'scripts/directives/partials/form/formTwoColumn.html']);
 
 angular.module("scripts/directives/partials/field/checkbox.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("scripts/directives/partials/field/checkbox.html",
@@ -9,17 +9,6 @@ angular.module("scripts/directives/partials/field/checkbox.html", []).run(["$tem
     "    <input ng-model=\"localModel\" type=\"checkbox\"/>\n" +
     "</div>\n" +
     "");
-}]);
-
-angular.module("scripts/directives/partials/field/date.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("scripts/directives/partials/field/date.html",
-    "<div>\n" +
-    "    <label>\n" +
-    "        {{field.label}}\n" +
-    "    </label>\n" +
-    "  <input type=\"text\" ng-disabled=\"disabled\" placeholder=\"{{field.placeholder}}\" ng-model=\"localModel\" name=\"fieldName\" ng-required=\"field.required\" data-date-format=\"{{field.datepickerOptions.format}}\" data-date-end-date=\"{{field.datepickerOptions.endDate}}\" min-view-mode=\"{{field.datepickerOptions.minViewMode}}\" start-view=\"{{field.datepickerOptions.startView}}\"  bs-datepicker>\n" +
-    "    <p class=\"text-error\" ng-show=\"fieldForm.fieldName.$error.required && fieldForm.fieldName.$dirty\">This field is required</p>\n" +
-    "</div>");
 }]);
 
 angular.module("scripts/directives/partials/field/dropdown.html", []).run(["$templateCache", function($templateCache) {
@@ -41,9 +30,9 @@ angular.module("scripts/directives/partials/field/email.html", []).run(["$templa
     "    <label>{{field.label}}</label>\n" +
     "    <div>\n" +
     "        <input ng-disabled=\"disabled\" type=\"email\" placeholder=\"{{field.placeholder}}\" ng-model=\"localModel\" name=\"fieldName\"  ng-required=\"field.required\" />\n" +
-    "        <p class=\"text-error\" ng-show=\"fieldForm.fieldName.$error.required && fieldForm.email.$dirty\">This field is required</p>\n" +
-    "        <p class=\"text-error\" ng-show=\"fieldForm.fieldName.$error.email\">This is not a valid email.</p>\n" +
-    "        <p class=\"text-error\" ng-show=\"fieldForm.fieldName.$error.maxlength\">Please enter no more than 254 characters.</p>\n" +
+    "        <p class=\"text-error\" ng-show=\"fieldForm.email.$error.required && fieldForm.email.$dirty\">This field is required</p>\n" +
+    "        <p class=\"text-error\" ng-show=\"fieldForm.email.$error.email\">This is not a valid email.</p>\n" +
+    "        <p class=\"text-error\" ng-show=\"fieldForm.email.$error.maxlength\">Please enter no more than 254 characters.</p>\n" +
     "    </div>\n" +
     "</div>\n" +
     "");
@@ -260,9 +249,6 @@ formRendererComponent.directive('formulate', ['$http', '$compile', '$parse', '$t
             case 'rte':
                 templateUrl = 'scripts/directives/partials/field/rte.html';
                 break;
-            case 'date':
-                templateUrl = 'scripts/directives/partials/field/date.html';
-                break;
             default:
                 templateUrl = 'scripts/directives/partials/field/textfield.html';
                 break;
@@ -285,13 +271,6 @@ formRendererComponent.directive('formulate', ['$http', '$compile', '$parse', '$t
         if (type === 'textarea') {
             if (!scope.field.rows)
                 scope.field.rows = 5;
-        }
-        if (type === 'date') {
-            if (!scope.field.datepickerOptions)
-                scope.field.datepickerOptions = {
-                    format: 'dd/mm/yyyy',
-                    endDate: new Date()
-                };
         }
 
         if (scope.field.pattern) {
